@@ -13,6 +13,7 @@ class AdminType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        // TODO Ajout d'un control sur le type du fichier
         $builder
             ->add('file', FileType::class, [
                 'label' => 'file',
