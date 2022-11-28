@@ -34,9 +34,11 @@ class AdminController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
+
             /** @var UploadedFile $file */
             $file = $form->getData()['file'];
             $linesEnter = $deserializeLineCsvEnter->deserialize($file->getContent());
+            
             $messageBus->dispatch(new CsvMessage($linesEnter));
 
             return $this->redirectToRoute('app_admin_res');
